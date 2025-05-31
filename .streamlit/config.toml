@@ -1,4 +1,4 @@
 [server]
-runOnSave = true
-headless = true
+enableWatchdog = false
+
 
