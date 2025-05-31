@@ -31,7 +31,7 @@ def load_model():
         "runwayml/stable-diffusion-v1-5",
         torch_dtype=dtype,
         variant="fp16" if dtype == torch.float16 else None,
-        token=key
+        token=st.secrets["HF_TOKEN"]
     )
     pipeline.to(device)
     return pipeline
