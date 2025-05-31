@@ -1,18 +1,10 @@
  # import needed libraries
 import os
 os.environ["STREAMLIT_WATCHER_TYPE"] = "watchdog"  # <-- Prevent PyTorch inspection crash
-import torch
 import diffusers
 import streamlit as st
-from huggingface_hub import login
-key=st.secrets["HF_TOKEN"]
+#key=st.secrets["HF_TOKEN"]
 # Set the device and dtype for GPUs
-if torch.cuda.is_available():
-    device = "cuda"
-    dtype = torch.float16
-else:
-    device = "cpu"
-    dtype = torch.float32
 
 # The dictionary mapping style names to style strings
 style_dict = {
@@ -26,6 +18,15 @@ style_dict = {
 
 # Load Stable Diffusion (load_model function)
 def load_model():
+    import torch
+    import diffusers
+    from huggingface_hub import login
+    if torch.cuda.is_available():
+        device = "cuda"
+        dtype = torch.float16
+    else:
+        device = "cpu"
+    dtype = torch.float32
     pipeline = diffusers.StableDiffusionPipeline.from_pretrained(
         "runwayml/stable-diffusion-v1-5",
         torch_dtype=dtype,
