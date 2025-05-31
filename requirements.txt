@@ -1,7 +1,8 @@
-torch
-diffusers
-streamlit
-transformers
 accelerate
-huggingface-hub
-watchdog
+torch==2.1.0
+diffusers==0.25.0
+streamlit==1.31.1
+watchdog==3.0.0
+transformers
+huggingface_hub
+
