@@ -4,6 +4,7 @@ import diffusers
 import streamlit as st
 from huggingface_hub import login
 import os
+key=st.secrets["HF_TOKEN"]
 # Set the device and dtype for GPUs
 if torch.cuda.is_available():
     device = "cuda"
@@ -27,7 +28,7 @@ def load_model():
     pipeline = diffusers.AutoPipelineForText2Image.from_pretrained(
         "CompVis/stable-diffusion-v1-4",
         revision="fp16",
-        use_auth_token=os.getenv("HF_TOKEN")
+        use_auth_token=key
     )
     pipeline.to(device)
 
