@@ -1,0 +1,6 @@
+torch
+diffusers
+streamlit
+transformers
+accelerate
+huggingface-hub
