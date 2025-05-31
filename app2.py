@@ -3,7 +3,6 @@ import torch
 import diffusers
 import streamlit as st
 from huggingface_hub import login
-import os
 key=st.secrets["HF_TOKEN"]
 # Set the device and dtype for GPUs
 if torch.cuda.is_available():
@@ -25,14 +24,15 @@ style_dict = {
 
 # Load Stable Diffusion (load_model function)
 def load_model():
-    pipeline = diffusers.AutoPipelineForText2Image.from_pretrained(
-        "CompVis/stable-diffusion-v1-4",
-        revision="fp16",
-        use_auth_token=key
+    pipeline = diffusers.StableDiffusionPipeline.from_pretrained(
+        "runwayml/stable-diffusion-v1-5",
+        torch_dtype=dtype,
+        variant="fp16" if dtype == torch.float16 else None,
+        token=key
     )
     pipeline.to(device)
-
     return pipeline
+
 
 
 # The generate_images function
