@@ -3,7 +3,6 @@ import os
 os.environ["STREAMLIT_WATCHER_TYPE"] = "watchdog"  # <-- Prevent PyTorch inspection crash
 import diffusers
 import streamlit as st
-st.runtime.legacy_caching.caching_options.suppress_st_warning = True
 
 # Your existing Streamlit app code here
 #key=st.secrets["HF_TOKEN"]
