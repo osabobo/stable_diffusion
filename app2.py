@@ -1,4 +1,6 @@
  # import needed libraries
+import os
+os.environ["STREAMLIT_WATCHER_TYPE"] = "none"  # <-- Prevent PyTorch inspection crash
 import torch
 import diffusers
 import streamlit as st
